@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>WAILA</title>
+</head>
+<body>
+<header>
+    <h1>WAILA</h1>
+    <p>Register new cable</p>
+</header>
+<hr>
+<main>
+    <form action="/cable/new" method="POST">
+        <label>Name <input type="text" name="name"></label><br>
+        <label>Description <textarea maxlength="256" name="description" cols=64 rows=4></textarea></label><br>
+        <input type="submit" value="Register">
+    </form>
+</main>
+</body>
+</html>

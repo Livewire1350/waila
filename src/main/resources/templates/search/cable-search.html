@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>WAILA</title>
+</head>
+<body>
+<header>
+    <h1>WAILA</h1>
+    <p>Cable Lookup</p>
+</header>
+<hr>
+<main>
+    <details>
+        <summary>Search by label</summary>
+        <form action="/search/cable" method="GET">
+            <label>
+                Label <input type="text" pattern="LW[0-9\-]{2}[A-Z0-9]{4}" title="Livewire1350 Label" name="label">
+            </label>
+        </form>
+    </details>
+    <details>
+        <summary>Search by name</summary>
+        <form action="/search/cable" method="GET">
+            <label>
+                Name (fuzzy search) <input type="text" title="Name" name="name">
+            </label>
+        </form>
+    </details>
+    <details>
+        <summary>Get from ID</summary>
+        <form action="/search/cable" method="GET">
+            <label>
+                ID <input type="number" title="Cable ID" name="id">
+            </label>
+        </form>
+    </details>
+</main>
+</body>
+</html>

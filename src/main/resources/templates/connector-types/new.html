@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>WAILA</title>
+</head>
+<body>
+<header>
+    <h1>WAILA</h1>
+    <p>Register connector type</p>
+</header>
+<hr>
+<main>
+    <form action="/connector-types/new" method="POST">
+        <label>Name <input type="text" name="name"></label><br>
+        <label>Description <textarea maxlength="256" name="description" cols=64 rows=4></textarea></label><br>
+        <label>Gender
+            <select name="gender">
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+                <option value="X">Hermaphroditic</option>
+            </select>
+        </label>
+        <input type="submit" value="Register">
+    </form>
+</main>
+</body>
+</html>
