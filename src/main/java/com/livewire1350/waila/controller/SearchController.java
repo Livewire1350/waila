@@ -1,18 +1,24 @@
 package com.livewire1350.waila.controller;
 
+import com.livewire1350.waila.model.EndConnector;
 import com.livewire1350.waila.repository.CableRepository;
+import com.livewire1350.waila.repository.EndConnectorRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Optional;
+
 @Controller
 public class SearchController {
 
     private final CableRepository cableRepository;
+    private final EndConnectorRepository endConnectorRepository;
 
-    public SearchController(CableRepository cableRepository) {
+    public SearchController(CableRepository cableRepository, EndConnectorRepository endConnectorRepository) {
         this.cableRepository = cableRepository;
+        this.endConnectorRepository = endConnectorRepository;
     }
 
     @GetMapping("/search/cable")
@@ -29,7 +35,16 @@ public class SearchController {
                 return "search/not-found";
             }
         }
-        return "cable-search";
+        if (label != null) {
+            Optional<EndConnector> endConnector = endConnectorRepository.findByLabel(label);
+            if (endConnector.isPresent()) {
+                return "redirect:/cable/" + endConnector.get().getCable().getId();
+            } else {
+                return "search/not-found";
+            }
+        }
+        // TODO: name
+        return "search/cable-search";
     }
 
 }
